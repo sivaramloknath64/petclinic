@@ -8,6 +8,7 @@ stage('build'){
 
 steps{
 echo 'building the project'
+  sh './mvnw package'
 }
 
 }
@@ -18,6 +19,7 @@ stage('Archive'){
 
 steps{
 echo 'Archiving the project'
+  archiveArtifacts artifacts: '**/*.jar', followSymlinks: false
 }
 
 }
