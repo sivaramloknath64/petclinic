@@ -43,17 +43,16 @@ pipeline {
     
     
     
-    stage ('Push Docker Image') {
+    stage ('Deploy to dev Environment') {
       steps{
-        echo "Pushing Docker Image"
-        script {
+        echo "deploying to dev environment"
+        
      sh "docker rm -f petclinic || true"
      sh " docker run -d --name=petclinic -p 8081:8080 sivaramloknath64/petclinic"     
               
-        }
+        
         }
       }
-    }
     
     
     
@@ -61,8 +60,9 @@ pipeline {
     
     
     
+  }   
     
 }
 
-}
+
 
