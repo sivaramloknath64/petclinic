@@ -1,4 +1,13 @@
 pipeline {
+  
+  environment{
+  
+    registry="sivaramloknath64/petclinic"
+    registryCredential="docker_hub_loknath"
+    dockerImage=""  
+  }
+  
+  
 agent any
 
 stages{
@@ -30,6 +39,10 @@ stage('building docker image'){
 
 steps{
 echo 'building the docker image'
+  script{
+    dockerImage=docker.build registry +':$BUILD_NUMBER'
+  } 
+  
 }
 
 }
@@ -41,6 +54,13 @@ stage('pushing the docker image'){
 
 steps{
 echo 'pushing the docker image'
+  script{
+  
+  
+  
+  }
+  
+  
 }
 
 }
