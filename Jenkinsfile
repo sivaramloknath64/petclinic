@@ -8,13 +8,13 @@ pipeline {
   stages{
     stage ('Build') {
       steps{
-        echo "Building Project"
+        echo "Building the  Project"
         sh './mvnw package'
       }
     }
     stage ('Archive') {
       steps{
-        echo "Archiving Project"
+        echo "Archiving the  Project"
         archiveArtifacts artifacts: '**/*.jar', followSymlinks: false
       }
     }
@@ -28,5 +28,28 @@ pipeline {
       }
     }
 
+    stage ('push the docker image') {
+      steps{
+        echo "pushing the Docker Image"
+        script {
+          
+          docker.withRegistry( '', registryCredential ) {
+              dockerImage.push()
+              dockerImage.push('latest')
+        }
+      }
+    }
+
+    stage ('deploy to dev Env') {
+      steps{
+        echo "deploy to dev env"
+        script {
+        
+          
+          
+        }
+      }
+    }   
+    
 }
 }
