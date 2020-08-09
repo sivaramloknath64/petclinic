@@ -28,29 +28,27 @@ pipeline {
       }
     }
 
-    stage ('push the docker image') {
+    
+    stage ('Push Docker Image') {
       steps{
-        echo "pushing the Docker Image"
+        echo "Pushing Docker Image"
         script {
-          
           docker.withRegistry( '', registryCredential ) {
               dockerImage.push()
               dockerImage.push('latest')
+          }
         }
       }
     }
-
-    stage ('deploy to dev Env') {
-      steps{
-        echo "deploy to dev env"
-        script {
-        
-          
-          
-        }
-      }
-    }   
+    
+    
+    
+    
+    
+    
+    
     
 }
+
 }
 }
