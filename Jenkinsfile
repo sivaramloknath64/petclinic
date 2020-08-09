@@ -43,6 +43,20 @@ pipeline {
     
     
     
+    stage ('Push Docker Image') {
+      steps{
+        echo "Pushing Docker Image"
+        script {
+     sh "docker rm -f petclinic || true"
+     sh " docker run -d --name=petclinic -p 8081:8080 sivaramloknath64/petclinic"     
+              
+        }
+        }
+      }
+    }
+    
+    
+    
     
     
     
