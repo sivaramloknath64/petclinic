@@ -1,7 +1,21 @@
 pipeline{
+agent any
+stages{
+
+stage('creating aws stack'){
+
+steps{
+echo "creating aws stack"
+withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-key', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+    sh 'aws s3 ls'
+}
+
+}
+
+
+}
 
 
 
-
-
+}
 }
